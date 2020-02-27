@@ -1,6 +1,8 @@
 # Personal blog for study notes
 
-Based on [Jekyll](https://jekyllrb.com) it is hosted on Github pages of this same repository (https://flaviodev.github.io/blog)
+Based on Ruby [Jekyll](https://jekyllrb.com) it is hosted on Github pages of this same repository (https://flaviodev.github.io/blog)
+
+Just create a post file and confirm and send it to github ... simplest!
 
 # Installation and execution
 
