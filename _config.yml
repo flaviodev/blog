@@ -31,7 +31,7 @@ social: # jekyll-seo-tag > social overrides
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-slate
+theme: jekyll-theme-midnight
 plugins:
   - jekyll-feed
 
