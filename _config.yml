@@ -13,16 +13,21 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: FlávioDeveloper - Study Notes
+title: FlavioDeveloper
 email: fdsdev@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "blog" # the subpath of your site, e.g. /blog
+  Study Notes - Just a space for notes, ideas, thoughts and so on.
+baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
 github_username:  flaviodev
+
+author: FlavioDev # jekyll-seo-tag > default author
+social: # jekyll-seo-tag > social overrides
+  name: Flávio de Souza # jekyll-seo-tag > real name
+  links:  # jekyll-seo-tag > social aliases (sameAs)
+    - https://www.linkedin.com/in/flaviodev
+    - https://github.com/flaviodev
 
 # Build settings
 markdown: kramdown
