@@ -4,15 +4,8 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+I am a creative and dedicated developer, with over 13 years of experience in various development environments and business activities, working in different positions and with different projects and technologies. Currently, I work 100% remotely at C6 Bank, consulting the company Invillia as a back-end specialist, on an incredible product, a super efficient team and a innovative and productive stack.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+I am passionate about developing great solutions, I really like new challenges and I love studing. So, I created this space to write my notes.
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+More about me in my [linkedin.com/in/flaviodev](http://www.linkedin.com/in/flaviodev)

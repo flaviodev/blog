@@ -21,19 +21,13 @@ baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
 github_username:  flaviodev
-
-author: FlavioDev # jekyll-seo-tag > default author
-social: # jekyll-seo-tag > social overrides
-  name: Flávio de Souza # jekyll-seo-tag > real name
-  links:  # jekyll-seo-tag > social aliases (sameAs)
-    - https://www.linkedin.com/in/flaviodev
-    - https://github.com/flaviodev
-
+show_excerpts: true
+    
 # Build settings
 markdown: kramdown
 theme: minima
-plugins:
-  - jekyll-feed
+#plugins:
+#  - jekyll-feed
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
