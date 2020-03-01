@@ -5,7 +5,7 @@ date:   2020-02-27 23:21:59 -0300
 categories: [ideias, dev-env]
 ---
 
-#### Why is development tool version management so often difficult?
+#### In some situations, version management of development tools can bring some complications to the environment configuration.
 If you've ever needed to maintain multiple projects developed in different technologies with different language and framework versions. So, you know how much   it's complicated to manage everything on the same machine.
 
 #### But the packaging tools of Linux distributions (like Ubuntu's apt), they have this mission, don't they? 
