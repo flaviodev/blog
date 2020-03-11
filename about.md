@@ -13,4 +13,4 @@ Currently, I work full remote at C6 Bank (by Invillia) as a back-end specialist,
 I like to learn new languages ​​and technologies and I'm interested in what helps me to be productive and create great code, such as tests, clean code, best practices and patterns.
 
 
-I'm passionate about developing great solutions, I really like new challenges and I love studing. So, I created this space to write my notes.
+I'm passionate about developing great solutions, I really like new challenges and I love studying. So, I created this space to write my notes.
