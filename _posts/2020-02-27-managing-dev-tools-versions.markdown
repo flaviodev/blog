@@ -1,9 +1,14 @@
 ---
 layout: post
 title:  "Improving version management of dev-tools on Linux"
-date:   2020-02-27 23:21:59 -0300
-categories: [ideias, dev-env]
+date:   2020-02-27 23:21:59 +0300
+description: # Add post description (optional)
+img: dev-env.png # Add image post (optional)
+fig-caption: # Add figcaption (optional)
+tags: [Others]
 ---
+
+
 
 #### In some situations, version management of development tools can bring some complications to the environment configuration.
 If you've ever needed to maintain multiple projects developed in different technologies with different language and framework versions. So, you know how much   it's complicated to manage everything on the same machine.

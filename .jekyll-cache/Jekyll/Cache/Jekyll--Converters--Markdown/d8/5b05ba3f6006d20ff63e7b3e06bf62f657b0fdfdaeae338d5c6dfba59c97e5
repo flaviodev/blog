@@ -1,0 +1,153 @@
+I"j <h4 id="in-some-situations-version-management-of-development-tools-can-bring-some-complications-to-the-environment-configuration">In some situations, version management of development tools can bring some complications to the environment configuration.</h4>
+<p>If you’ve ever needed to maintain multiple projects developed in different technologies with different language and framework versions. So, you know how much   it’s complicated to manage everything on the same machine.</p>
+
+<h4 id="but-the-packaging-tools-of-linux-distributions-like-ubuntus-apt-they-have-this-mission-dont-they">But the packaging tools of Linux distributions (like Ubuntu’s apt), they have this mission, don’t they?</h4>
+<p>They work for stable tools, like the JDK (Java Development Kit), which are not updated frequently.</p>
+
+<p>If you want to use unstable versions or tools that change frequently, packaging tools are not a good option, although it also doesn’t solve the problem of installing more than one version of the same tool (for example: two versions of nodejs).</p>
+
+<h4 id="most-common-issues-with-managing-versions-of-development-tools">Most common issues with managing versions of development tools:</h4>
+<ul>
+  <li>Services installation and configuration</li>
+  <li>Many different places to download installers</li>
+  <li>time spent installing and configuring a development environment</li>
+  <li>Organization (directory tree)</li>
+  <li>PATH configuration for different versions of the same tool</li>
+</ul>
+
+<h4 id="for-services-version-management-there-is-an-obvious-solution-docker">For services version management there is an obvious solution: Docker</h4>
+<p>Using Docker, you can easily activate and deactivate any type of service when necessary, and thus easily manage different versions of a specific service (for example: different versions of postgres).
+Another big advantage is the fact that the images of the main services needed are in DockerHub (which makes it easy to find) and, with a reasonable knowledge of docker technology, you can quickly create scripts to create and run containers organized in a single location, where you can take them to another computer or just make a backup.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    
+    <span class="nv">$ </span>docker run <span class="nt">-d</span> <span class="nt">--name</span> pg9 <span class="nt">-e</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>password <span class="nt">-p</span> 5432:5432 postgres:9.6-alpine
+
+    <span class="nv">$ </span>docker run <span class="nt">-d</span> <span class="nt">--name</span> pg10 <span class="nt">-e</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>password <span class="nt">-p</span> 65432:5432 postgres:10.12-alpine
+
+</code></pre></div></div>
+
+<h4 id="universal-package-manager-for-installed-development-tools">Universal package manager for installed development tools</h4>
+
+<p>Docker is a good way to run services, but when you need to use tools to compile and run code (like clojure), it’s even possible, but it’s horrible, this type of tool requires installation. To solve this problem, there is a project on github called <a href="https://asdf-vm.com">asdf-vm</a>, an extendable version manager with support for Ruby, Node.js, Elixir, Erlang &amp; much more, this tool allows you to manage multiple runtime versions with a single CLI.</p>
+
+<p>The main motivations to use it are the single global config keeping defaults in one place, the possiblitiy to automatically switches runtime versions as you traverse your directories and a simple plugin system to add support for your language of choice (<a href="https://asdf-vm.com/#/plugins-all">all plugins list</a>).</p>
+
+<h5 id="to-demonstrate-the-adsf-vm-features-lets-install-kotlin-and-nodejs">To demonstrate the adsf-vm features, let’s install Kotlin and NodeJS:</h5>
+
+<ul>
+  <li>
+    <p>First of all, it’s necessary to install adsf-vm (<a href="https://asdf-vm.com/#/core-manage-asdf-vm">get startd</a>)</p>
+  </li>
+  <li>
+    <p>Install Kotlin and NodeJS plugins by asdf-vm</p>
+
+    <p>Get plugins at <a href="https://asdf-vm.com/#/plugins-all">plugin list</a> (<a href="https://github.com/missingcharacter/asdf-kotlin">Kotlin</a> and <a href="https: //github.com/asdf-vm/asdf-nodejs">NodeJS</a>), on each plugin page there will be installation instructions with commands like these:</p>
+
+    <p>Installing Kotlin</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+      <span class="nv">$ </span>asdf plugin-add kotlin https://github.com/missingcharacter/asdf-kotlin.git
+
+</code></pre></div>    </div>
+
+    <p>Installing NodeJs</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+      <span class="nv">$ </span>asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+
+      <span class="nv">$ </span>bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Listing asdf installed plugins and versions</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+      <span class="nv">$ </span>asdf list
+
+</code></pre></div>    </div>
+
+    <p>Result:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+      kotlin
+      No versions installed
+      nodejs
+      No versions installed
+
+</code></pre></div>    </div>
+
+    <p>This means that we can now choose the plugin versions to be installed, to list all versions of a plugin:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+      <span class="nv">$ </span>asdf list-all kotlin
+
+</code></pre></div>    </div>
+
+    <p>The result will be a huge list of all versions of the Kotlin.</p>
+  </li>
+  <li>
+    <p>Installing versions</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+      <span class="nv">$ </span>asdf <span class="nb">install </span>kotlin 1.3.61
+
+      <span class="nv">$ </span>asdf <span class="nb">install </span>kotlin 1.3.70-eap-42
+
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Global and local paths</p>
+
+    <p>After to install we need to define the global version for all projects:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+      <span class="nv">$ </span>asdf global kotlin 1.3.61
+
+</code></pre></div>    </div>
+
+    <p>However, we can define a specific version for a project:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+      ~/project1<span class="nv">$ </span>asdf <span class="nb">local </span>kotlin 1.3.70-eap-42
+
+</code></pre></div>    </div>
+
+    <p>To install other tools, simply repeat the steps:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+      <span class="nv">$ </span>asdf list-all nodejs
+
+      <span class="nv">$ </span>asdf <span class="nb">install </span>nodejs 9.10.0
+
+      <span class="nv">$ </span>asdf <span class="nb">install </span>nodejs 13.9.0
+
+      <span class="nv">$ </span>asdf global nodejs 13.9.0
+
+      ~/project1<span class="nv">$ </span>asdf <span class="nb">local </span>nodejs 9.10.0
+
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Updating versions and asdf-vm</p>
+
+    <p>Finally, to update the versions of the installed plugins</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+      <span class="nv">$ </span>asdf plugin-update <span class="nt">--all</span>
+
+</code></pre></div>    </div>
+
+    <p>and the asdf-vm</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+      <span class="nv">$ </span>asdf update
+
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h5 id="conclusion">Conclusion</h5>
+
+<p>With these simple tools and strategies for organizing and managing services and development tools, you can avoid version conflicts and less time wasted setting up the environment.</p>
+:ET
